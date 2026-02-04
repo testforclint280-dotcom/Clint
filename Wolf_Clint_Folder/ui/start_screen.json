@@ -1,0 +1,7 @@
+
+{
+  "start_screen@common.base_screen": {
+    "$screen_content": "start_astral_screen.content",
+	"$screen_animations": []
+  }
+}

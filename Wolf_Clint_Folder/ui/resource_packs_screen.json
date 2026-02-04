@@ -1,0 +1,177 @@
+{
+  "namespace": "resource_packs_screen",
+
+  "wolf_logo_icon": {
+    "type": "image",
+    "size": [10, 10],
+    "texture": "textures/gui/wolf_logo",
+    "layer": 1,
+    "color": [1.0, 1.0, 1.0]
+  },
+
+  "wolf_logo_glow_icon": {
+    "type": "image",
+    "size": [10, 10],
+    "texture": "textures/gui/wolf_logo",
+    "layer": 1,
+    "color": [0.2, 0.8, 1.0],
+    "alpha": 0.5
+  },
+
+  "pack_settings_button": {
+    "type": "button",
+    "size": [20, 20],
+    "offset": [10, 10],
+    "layer": 2,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.open_pack_settings",
+        "mapping_type": "focused"
+      }
+    ]
+  },
+
+  "lunar_pack_icon": {
+    "type": "image",
+    "size": [20, 20],
+    "texture": "textures/ui/lunar_logo",
+    "layer": 1
+  },
+
+  "subpack_slider_icon": {
+    "type": "image",
+    "size": [16, 16],
+    "texture": "textures/gui/icons",
+    "layer": 1
+  },
+
+  "subpack_option_button@common_buttons.light_glyph_button": {
+    "size": [160, 32],
+    "$button_content": "resource_packs_screen.subpack_slider_icon",
+    "offset": [0, 0],
+    "layer": 2
+  },
+
+  "subpack_selector_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100%", "100%c"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 2,
+    "controls": [
+      {
+        "title_label": {
+          "type": "label",
+          "text": "Lunar Subpacks",
+          "size": ["100%c", "100%c"],
+          "color": [0.2, 0.8, 1.0],
+          "font_scale_factor": 1.2,
+          "offset": [0, 10],
+          "layer": 2
+        }
+      },
+      {
+        "divider": {
+          "type": "image",
+          "size": [200, 2],
+          "color": [0.2, 0.8, 1.0],
+          "texture": "textures/ui/White",
+          "offset": [0, 5],
+          "layer": 2
+        }
+      },
+      {
+        "subpack_list": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": ["100%", "100%c"],
+          "layer": 2,
+          "controls": [
+            {
+              "default_option": {
+                "type": "button",
+                "size": [180, 28],
+                "offset": [0, 4],
+                "layer": 2,
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.select_default_subpack",
+                    "mapping_type": "focused"
+                  }
+                ]
+              }
+            },
+            {
+              "pvp_option": {
+                "type": "button",
+                "size": [180, 28],
+                "offset": [0, 4],
+                "layer": 2,
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.select_pvp_subpack",
+                    "mapping_type": "focused"
+                  }
+                ]
+              }
+            },
+            {
+              "minimal_option": {
+                "type": "button",
+                "size": [180, 28],
+                "offset": [0, 4],
+                "layer": 2,
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.select_minimal_subpack",
+                    "mapping_type": "focused"
+                  }
+                ]
+              }
+            },
+            {
+              "lunar_max_option": {
+                "type": "button",
+                "size": [180, 28],
+                "offset": [0, 4],
+                "layer": 2,
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.select_lunar_max_subpack",
+                    "mapping_type": "focused"
+                  }
+                ]
+              }
+            },
+            {
+              "fps_option": {
+                "type": "button",
+                "size": [180, 28],
+                "offset": [0, 4],
+                "layer": 2,
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.select_fps_subpack",
+                    "mapping_type": "focused"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "resource_packs_screen@common.base_screen": {
+    "$screen_content": "resource_packs_screen.subpack_selector_panel",
+    "$screen_bg_content": "common.transparent_background"
+  }
+}

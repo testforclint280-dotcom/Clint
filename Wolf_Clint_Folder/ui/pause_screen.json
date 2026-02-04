@@ -1,0 +1,143 @@
+{
+  "namespace": "pause_screen",
+
+  /* --- 1. Button Styles (Existing) --- */
+  "resume_button@common_buttons_concept.green_button": {
+    "size": [ 150, 20 ],
+    "$button_text": "Resume Game",
+    "$pressed_button_name": "button.menu_resume",
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+  "settings_button@common_buttons_concept.green_button": {
+    "size": [ 150, 20 ],
+    "$button_text": "Settings",
+    "$pressed_button_name": "button.menu_settings",
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+  "wolf_settings_button@common_buttons_concept.green_button": {
+    "size": [ 150, 20 ],
+    "$button_text": "Wolf Client Settings",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "on_click": {
+      "scripts": [ "$wolf_menu_toggle = !($wolf_menu_toggle);" ]
+    }
+  },
+  "quit_button@common_buttons_concept_purple.purple_button": {
+    "size": [ 150, 20 ],
+    "$button_text": "Save & Quit",
+    "$pressed_button_name": "button.menu_quit",
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+
+  /* --- 2. The New Wolf Mod Menu Overlay --- */
+  "wolf_mod_menu_panel": {
+    "type": "panel",
+    "size": [ 200, 150 ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 100,
+    "visible": "( $wolf_menu_toggle )",
+    "controls": [
+      /* Background */
+      {
+        "bg": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "color": [ 0, 0, 0 ],
+          "alpha": 0.85,
+          "size": [ "100%", "100%" ]
+        }
+      },
+      /* Border */
+      {
+        "border": {
+          "type": "image",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100% + 2px", "100% + 2px" ],
+          "color": [ 0.3, 0.8, 0.3 ] 
+        }
+      },
+      /* Content Stack */
+      {
+        "menu_content": {
+          "type": "stack_panel",
+          "size": [ 180, "100%" ],
+          "offset": [ 0, 10 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "controls": [
+            {
+              "title": {
+                "type": "label",
+                "text": "§l§2Wolf Client",
+                "font_type": "smooth",
+                "size": [ "default", 20 ],
+                "shadow": true
+              }
+            },
+            { "spacer": { "type": "panel", "size": [ 1, 10 ] } },
+            /* Placeholder Toggles */
+            { 
+              "fps_label": { 
+                "type": "label", "text": "FPS Boost: [ ON ]", "color": "$text_color", "size": [ "100%", 15 ] 
+              } 
+            },
+            { "spacer2": { "type": "panel", "size": [ 1, 5 ] } },
+            { 
+              "fullbright_label": { 
+                "type": "label", "text": "Fullbright: [ OFF ]", "color": "$text_color", "size": [ "100%", 15 ] 
+              } 
+            },
+            { "spacer3": { "type": "panel", "size": [ 1, 30 ] } },
+            /* Close Button */
+            {
+              "close_btn@common_buttons_concept_purple.purple_button": {
+                "size": [ 100, 18 ],
+                "$button_text": "Close",
+                "on_click": {
+                  "scripts": [ "$wolf_menu_toggle = false;" ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  /* --- 3. The Combined Screen Content --- */
+  "pause_screen_content": {
+    "type": "panel",
+    "controls": [
+      /* The Normal Buttons (Resume, Quit, etc) */
+      {
+        "button_stack": {
+          "type": "stack_panel",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "size": [ 150, "100%" ],
+          "controls": [
+            { "resume@pause_screen.resume_button": {} },
+            { "spacer_1": { "type": "panel", "size": [ 1, 5 ] } },
+            { "settings@pause_screen.settings_button": {} },
+            { "spacer_2": { "type": "panel", "size": [ 1, 5 ] } },
+            { "wolf@pause_screen.wolf_settings_button": {} }, 
+            { "spacer_3": { "type": "panel", "size": [ 1, 5 ] } },
+            { "quit@pause_screen.quit_button": {} }
+          ]
+        }
+      },
+      /* The Mod Menu Overlay (Sits on top because it's listed last) */
+      { "mod_menu@pause_screen.wolf_mod_menu_panel": {} }
+    ]
+  },
+
+  /* --- 4. Hook into Base Screen --- */
+  "pause_screen@base_screen.root_screen": {
+    "$middle_content": "pause_screen.pause_screen_content"
+  }
+}

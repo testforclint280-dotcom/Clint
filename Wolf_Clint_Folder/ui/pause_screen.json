@@ -1,7 +1,5 @@
 {
   "namespace": "pause_screen",
-
-  /* --- 1. Button Styles (Existing) --- */
   "resume_button@common_buttons_concept.green_button": {
     "size": [ 150, 20 ],
     "$button_text": "Resume Game",
@@ -32,8 +30,6 @@
     "anchor_from": "center",
     "anchor_to": "center"
   },
-
-  /* --- 2. The New Wolf Mod Menu Overlay --- */
   "wolf_mod_menu_panel": {
     "type": "panel",
     "size": [ 200, 150 ],
@@ -42,7 +38,6 @@
     "layer": 100,
     "visible": "( $wolf_menu_toggle )",
     "controls": [
-      /* Background */
       {
         "bg": {
           "type": "image",
@@ -52,7 +47,6 @@
           "size": [ "100%", "100%" ]
         }
       },
-      /* Border */
       {
         "border": {
           "type": "image",
@@ -61,7 +55,6 @@
           "color": [ 0.3, 0.8, 0.3 ] 
         }
       },
-      /* Content Stack */
       {
         "menu_content": {
           "type": "stack_panel",
@@ -80,20 +73,18 @@
               }
             },
             { "spacer": { "type": "panel", "size": [ 1, 10 ] } },
-            /* Placeholder Toggles */
             { 
               "fps_label": { 
-                "type": "label", "text": "FPS Boost: [ ON ]", "color": "$text_color", "size": [ "100%", 15 ] 
+                "type": "label", "text": "FPS Boost: [ ON ]", "size": [ "100%", 15 ] 
               } 
             },
             { "spacer2": { "type": "panel", "size": [ 1, 5 ] } },
             { 
               "fullbright_label": { 
-                "type": "label", "text": "Fullbright: [ OFF ]", "color": "$text_color", "size": [ "100%", 15 ] 
+                "type": "label", "text": "Fullbright: [ OFF ]", "size": [ "100%", 15 ] 
               } 
             },
             { "spacer3": { "type": "panel", "size": [ 1, 30 ] } },
-            /* Close Button */
             {
               "close_btn@common_buttons_concept_purple.purple_button": {
                 "size": [ 100, 18 ],
@@ -108,12 +99,9 @@
       }
     ]
   },
-
-  /* --- 3. The Combined Screen Content --- */
   "pause_screen_content": {
     "type": "panel",
     "controls": [
-      /* The Normal Buttons (Resume, Quit, etc) */
       {
         "button_stack": {
           "type": "stack_panel",
@@ -131,12 +119,9 @@
           ]
         }
       },
-      /* The Mod Menu Overlay (Sits on top because it's listed last) */
       { "mod_menu@pause_screen.wolf_mod_menu_panel": {} }
     ]
   },
-
-  /* --- 4. Hook into Base Screen --- */
   "pause_screen@base_screen.root_screen": {
     "$middle_content": "pause_screen.pause_screen_content"
   }

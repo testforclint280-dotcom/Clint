@@ -1,4 +1,4 @@
-zip -r Wolf_Clint_V1.mcpack . -x ".git/*" ".github/*"{
+{
   "namespace": "progress",
   "title_text": {
     "type": "label",

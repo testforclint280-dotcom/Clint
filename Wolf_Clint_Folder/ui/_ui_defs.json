@@ -6,7 +6,6 @@
     "Homescreen/ui/progress_screen.json",
     "Homescreen/ui/screen_animations.json",
     "Homescreen/ui/start_screen.json",
-    "ui/pause_screen.json",
     "ui/brewing_stand_screen.json",
     "ui/brewing_stand_screen_pocket.json",
     "ui/chat_screen.json",
